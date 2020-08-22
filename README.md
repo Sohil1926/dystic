@@ -1,5 +1,5 @@
 ![Image of Logo](https://media.discordapp.net/attachments/746184734111039670/746726388719026237/dystic.png)
-![Image of Slogan](https://media.discordapp.net/attachments/746184734111039670/746726390623371414/making_job_search_more_accessible.png)
+![Image of Slogan](https://media.discordapp.net/attachments/746184734111039670/746726390623371414/making_job_search_more_accessible..png)
 
 
 
