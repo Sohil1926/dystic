@@ -1,4 +1,5 @@
 dystic
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 making job search more accessible
 
