@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dystic</title>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: 'AIzaSyDhTisOxnWVqcIL8D5IIZtPi0u9YhuNVAw',
+      authDomain: 'dystic-mhacks.firebaseapp.com',
+      databaseURL: 'https://dystic-mhacks.firebaseio.com',
+      projectId: 'dystic-mhacks',
+      storageBucket: 'dystic-mhacks.appspot.com',
+      messagingSenderId: '733192130060',
+      appId: '1:733192130060:web:341352825630a26756a829',
+      measurementId: 'G-W6MCKJC419',
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+  <style media="screen">
+    body {
+      background: #eceff1;
+      color: rgba(0, 0, 0, 0.87);
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #message {
+      background: white;
+      max-width: 360px;
+      margin: 100px auto 16px;
+      padding: 32px 24px;
+      border-radius: 3px;
+    }
+
+    #message h2 {
+      color: #ffa100;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    #message h1 {
+      font-size: 22px;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 16px;
+    }
+
+    #message p {
+      line-height: 140%;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    #message a {
+      display: block;
+      text-align: center;
+      background: #039be5;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    #message,
+    #message a {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    #load {
+      color: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+
+      body,
+      #message {
+        margin-top: 0;
+        background: white;
+        box-shadow: none;
+      }
+
+      body {
+        border-top: 16px solid #ffa100;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <br>
+    <h3>Register</h3>
+    <form>
+      <div class="form-group">
+        <label for="emailBox">Email address</label>
+        <input type="text" class="form-control" id="emailBox" aria-describedby="emailHelp" placeholder="Enter email" />
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="pwBox">Password</label>
+        <input type="password" class="form-control" id="pwBox" placeholder="Password" />
+      </div>
+      <button type="submit" id='btnRegister' class="btn btn-primary">Register</button>
+    </form>
+
+    <hr>
+    <h3>Login</h3>
+    <form>
+      <div class="form-group">
+        <label for="emailBox">Email address</label>
+        <input type="text" class="form-control" id="emailBoxLogin" aria-describedby="emailHelp"
+          placeholder="Enter email" />
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="pwBox">Password</label>
+        <input type="password" class="form-control" id="pwBoxLogin" placeholder="Password" />
+      </div>
+      <button type="submit" id='btnLogin' class="btn btn-primary">Login</button>
+    </form>
+
+    <hr>
+    <h3>Reset Password</h3>
+    <div class="form-group">
+      <label for="pwBox">Password</label>
+      <input type="password" class="form-control" id="pwBoxReset" placeholder="New Password" />
+    </div>
+    <button type="submit" id='btnReset' class="btn btn-primary">Reset</button>
+
+    <hr>
+    <input type="text" class="form-control" id="txtSpeak" placeholder="Text">
+    <br>
+    <button class="btn btn-primary" id="btnSpeak">Speak</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
