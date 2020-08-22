@@ -73,8 +73,37 @@ btnReset.onclick = () => {
 const btnSpeak = document.getElementById('btnSpeak');
 let textSpeak = document.getElementById('txtSpeak');
 
-const fs = require('fs');
-
 btnSpeak.onclick = () => {
-  console.log(fs);
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = textSpeak.value;
+  window.speechSynthesis.speak(msg);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const db = firebase.firestore();
+
+db.collection()
+  .doc('LA')
+  .set({
+    name: 'Los Angeles',
+    state: 'CA',
+    country: 'USA',
+  })
+  .then(function () {
+    console.log('Document successfully written!');
+  })
+  .catch(function (error) {
+    console.error('Error writing document: ', error);
+  });
