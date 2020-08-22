@@ -73,43 +73,8 @@ btnReset.onclick = () => {
 const btnSpeak = document.getElementById('btnSpeak');
 let textSpeak = document.getElementById('txtSpeak');
 
-if ('speechSynthesis' in window) {
-  // Speech Synthesis supported 🎉
-  btnSpeak.onclick = () => {
-    // var msg = new SpeechSynthesisUtterance();
-    // msg.text = textSpeak.value.toString();
-    // window.speechSynthesis.speak(msg);
-    // Imports the Google Cloud client library
-    const textToSpeech = require('@google-cloud/text-to-speech');
+const fs = require('fs');
 
-    // Import other required libraries
-    const fs = require('fs');
-    const util = require('util');
-    // Creates a client
-    const client = new textToSpeech.TextToSpeechClient();
-    async function quickStart() {
-      // The text to synthesize
-      const text = 'hello, world!';
-
-      // Construct the request
-      const request = {
-        input: { text: text },
-        // Select the language and SSML voice gender (optional)
-        voice: { languageCode: 'en-US', ssmlGender: 'NEUTRAL' },
-        // select the type of audio encoding
-        audioConfig: { audioEncoding: 'MP3' },
-      };
-
-      // Performs the text-to-speech request
-      const [response] = await client.synthesizeSpeech(request);
-      // Write the binary audio content to a local file
-      const writeFile = util.promisify(fs.writeFile);
-      await writeFile('output.mp3', response.audioContent, 'binary');
-      console.log('Audio content written to file: output.mp3');
-    }
-    quickStart();
-  };
-} else {
-  // Speech Synthesis Not Supported 😣
-  alert("Sorry, your browser doesn't support text to speech!");
-}
+btnSpeak.onclick = () => {
+  console.log(fs);
+};
