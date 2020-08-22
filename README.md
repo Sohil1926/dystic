@@ -1,5 +1,4 @@
-# dystic
-making job search more accessible
+<img>https://media.discordapp.net/attachments/746184734111039670/746726388719026237/dystic.png</img>
 
 Created by: Sohil Athare, Andrew Yang, May Kam, and Arnav Shah
 
