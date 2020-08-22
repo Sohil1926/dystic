@@ -7,6 +7,10 @@
     "body-parser": "^1.19.0",
     "browserify": "^16.5.2",
     "express": "^4.17.1",
+    "firebase": "^7.19.0",
+    "firebase-admin": "^9.1.1",
+    "firebase-functions": "^3.11.0",
+    "googleapis": "^59.0.0",
     "nodemon": "^2.0.4",
     "request": "^2.88.2",
     "requirejs": "^2.3.6"

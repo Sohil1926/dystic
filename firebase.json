@@ -7,17 +7,11 @@
     "indexes": "firestore.indexes.json"
   },
   "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint"
-    ]
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
   },
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "storage": {
     "rules": "storage.rules"
@@ -33,7 +27,13 @@
       "port": 9000
     },
     "hosting": {
-      "port": 5000
+      "port": 5000,
+      "rewrites": [
+        {
+          "source": "/timestamp",
+          "function": "app"
+        }
+      ]
     },
     "pubsub": {
       "port": 8085
