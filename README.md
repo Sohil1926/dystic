@@ -1,4 +1,5 @@
-!(dystic.png)
+dystic
+make job search more accessible
 
 Created by: Sohil Athare, Andrew Yang, May Kam, and Arnav Shah
 
