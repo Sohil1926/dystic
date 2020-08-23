@@ -124,6 +124,7 @@ function getObjects() {
 }
 
 btnSave.onclick = () => {
+  getObjects();
   var doc = new jsPDF();
   //Education
   eduTxt.forEach(function (edu, i) {
