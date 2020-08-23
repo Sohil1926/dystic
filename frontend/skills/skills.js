@@ -123,8 +123,7 @@ function getObjects() {
   });
 }
 
-btnSave.onclick = () => getObjects();
-{
+btnSave.onclick = () => {
   var doc = new jsPDF();
   //Education
   eduTxt.forEach(function (edu, i) {
@@ -220,7 +219,7 @@ btnSave.onclick = () => getObjects();
   });
 
   doc.save(user.uid + '_resume.pdf');
-}
+};
 
 var msg = new SpeechSynthesisUtterance();
 msg.text = document.querySelector('body').innerHTML;
