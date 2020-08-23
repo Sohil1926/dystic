@@ -23,12 +23,24 @@ let pwReset = document.getElementById('pwBoxReset');
 const btnReset = document.getElementById('btnReset');
 
 const educationTextHTML = document.getElementById('userEducation');
+
 var eduTxt = '';
+var cwTxt = '';
+var expTxt = '';
+var skillTxt = '';
+var projectTxt = '';
 
 const db = firebase.firestore();
 
 let educationRef;
 let unsubscribe;
+
+function capitalizeFLetter() {
+  var input = document.getElementById('input');
+  var x = document.getElementById('div');
+  var string = input.value;
+  x.innerHTML = string[0].toUpperCase() + string.slice(1);
+}
 
 btnLog.onclick = (e) => {
   e.preventDefault();
@@ -48,7 +60,7 @@ btnLog.onclick = (e) => {
   // Print current user data
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      document.getElementById('useruidtxt').innerHTML = user.uid;
+      document.getElementById('useruidtxt').innerHTML += user.uid;
 
       db.collection('education')
         .get()
@@ -56,10 +68,59 @@ btnLog.onclick = (e) => {
           querySnapshot.forEach(function (doc) {
             console.log(doc.data());
             for (x in doc.data()) {
-              eduTxt += doc.data()[x] + ' ';
-              document.getElementById('userEducation').innerHTML = eduTxt;
+              eduTxt += doc.data()[x] + ' | ';
             }
-            // document.getElementById('userEducation').innerHTML = eduTxt;
+            document.getElementById('userEducation').innerHTML += eduTxt;
+          });
+        });
+
+      db.collection('coursework')
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            console.log(doc.data());
+            for (x in doc.data()) {
+              cwTxt += doc.data()[x] + ' | ';
+            }
+            document.getElementById('userCoursework').innerHTML += cwTxt;
+          });
+        });
+
+      db.collection('experience')
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            console.log(doc.data());
+            for (x in doc.data()) {
+              expTxt += doc.data()[x] + ' | ';
+            }
+            document.getElementById('userExperience').innerHTML += expTxt;
+          });
+        });
+
+      db.collection('project')
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            console.log(doc.data());
+            for (x in doc.data()) {
+              projectTxt += doc.data()[x] + ' | ';
+            }
+            document.getElementById('userProjects').innerHTML += projectTxt;
+          });
+        });
+      db.collection('skills')
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            console.log(doc.data());
+            for (x in doc.data()) {
+              skillTxt += doc.data()[x] + ' | ';
+            }
+            document.getElementById('userSkills').innerHTML += skillTxt
+              .replace('and', ' ')
+              .replace(',', ' |')
+              .replace(',', ' |');
           });
         });
     } else {
