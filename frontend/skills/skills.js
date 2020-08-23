@@ -94,6 +94,30 @@ function getObjects() {
 }
 
 btnSave.onclick = () => getObjects();
+{  
+  var doc = new jsPDF();
+  //Education
+  eduTxt.forEach(function(edu, i){
+   doc.text(20, 10 + (i * 10), 
+        "Year: " + edu.year +
+        "Location: " + edu.location +
+        "Degree: " + edu.degree +     
+        "Minors: " + edu.minors +     
+        "Institution: " + edu.institution );
+});
+ //Course
+  /*  cwTxt.forEach(function(course, i){
+   doc.text(20, 10 + (i * 10), 
+        "Course Name: " + course.name +
+        ": " + course. +
+        ": " + course. +     
+        ": " + course. +     
+        ": " + course. );
+});
+*/
+doc.save(user.uid+'_resume.pdf'); 
+  
+}
 
 var msg = new SpeechSynthesisUtterance();
 msg.text = document.querySelector('body').innerHTML;
