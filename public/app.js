@@ -22,6 +22,14 @@ const btnLog = document.getElementById('btnLogin');
 let pwReset = document.getElementById('pwBoxReset');
 const btnReset = document.getElementById('btnReset');
 
+const educationTextHTML = document.getElementById('userEducation');
+var eduTxt = '';
+
+const db = firebase.firestore();
+
+let educationRef;
+let unsubscribe;
+
 btnLog.onclick = (e) => {
   e.preventDefault();
   firebase
@@ -34,19 +42,29 @@ btnLog.onclick = (e) => {
       alert(error);
     });
 
-  //Sohil code
-  // const db = firebase.firestore();
-  var ref = firebase.database().ref();
+  // Sohil's original code which was not working was deleted.
 
-  ref.on(
-    'value',
-    function (snapshot) {
-      console.log(snapshot.val());
-    },
-    function (error) {
-      console.log('Error: ' + error.code);
+  // New Code
+  // Print current user data
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      document.getElementById('useruidtxt').innerHTML = user.uid;
+
+      db.collection('education')
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            console.log(doc.data());
+            for (x in doc.data()) {
+              eduTxt += doc.data()[x] + ' ';
+              document.getElementById('userEducation').innerHTML = eduTxt;
+            }
+            // document.getElementById('userEducation').innerHTML = eduTxt;
+          });
+        });
+    } else {
     }
-  );
+  });
 };
 
 btnReset.onclick = () => {
@@ -92,19 +110,3 @@ btnSpeak.onclick = () => {
   msg.text = textSpeak.value;
   window.speechSynthesis.speak(msg);
 };
-
-const db = firebase.firestore();
-
-db.collection()
-  .doc('LA')
-  .set({
-    name: 'Los Angeles',
-    state: 'CA',
-    country: 'USA',
-  })
-  .then(function () {
-    console.log('Document successfully written!');
-  })
-  .catch(function (error) {
-    console.error('Error writing document: ', error);
-  });
